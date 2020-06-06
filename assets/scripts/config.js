@@ -3,8 +3,8 @@
 let apiUrl
 const apiUrls = {
   production: 'https://tic-tac-toe-wdi-production.herokuapp.com',
-  development: 'https://tic-tac-toe-wdi-production.herokuapp.com'
   // development: 'http://localhost:4741'
+  development: 'https://tic-tac-toe-wdi.herokuapp.com'
 }
 
 if (window.location.hostname === 'localhost') {
