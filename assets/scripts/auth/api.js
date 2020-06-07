@@ -61,11 +61,51 @@ const newGame = function (formData) {
   console.log(formData)
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games/',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data: ''
+  })
+}
+
+const indexZero = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 0,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexOne = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 1,
+          value: 'x'
+        },
+        over: false
+      }
+    }
   })
 }
 
@@ -74,5 +114,7 @@ module.exports = {
   signIn: signIn,
   changePassword: changePassword,
   signOut: signOut,
-  newGame: newGame
+  newGame: newGame,
+  indexZero: indexZero,
+  indexOne: indexOne
 }

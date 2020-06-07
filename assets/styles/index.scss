@@ -9,6 +9,18 @@ $font-color: $light;
   color: red;
 }
 
+#changepw {
+  display: none;
+}
+
+#newgame {
+  display: none;
+}
+
+// .row {
+//   display: none;
+// }
+
 .box {
   align-items: center;
   background-color: $secondary;

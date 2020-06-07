@@ -72,39 +72,59 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
-const onTopLeft = function (event) {
+const onIndexZero = function (event) {
   console.log('Top Left Selected!')
+
+  const form = event.target
+  const data = getFormFields(form)
+
+  console.log(event)
+  console.log(data)
+
+  api.indexZero(data)
+    .then(ui.indexZeroSuccess)
+    .catch(ui.indexZeroFailure)
 }
 
-const onTopCenter = function (event) {
+const onIndexOne = function (event) {
   console.log('Top Center Selected!')
+
+  const form = event.target
+  const data = getFormFields(form)
+
+  console.log(event)
+  console.log(data)
+
+  api.indexOne(data)
+    .then(ui.indexOneSuccess)
+    .catch(ui.indexOneFailure)
 }
 
-const onTopRight = function (event) {
+const onIndexTwo = function (event) {
   console.log('Top Right Selected!')
 }
 
-const onMiddleLeft = function (event) {
+const onIndexThree = function (event) {
   console.log('Middle Left Selected!')
 }
 
-const onMiddleCenter = function (event) {
+const onIndexFour = function (event) {
   console.log('Middle Center Selected!')
 }
 
-const onMiddleRight = function (event) {
+const onIndexFive = function (event) {
   console.log('Middle Right Selected!')
 }
 
-const onBottomLeft = function (event) {
+const onIndexSix = function (event) {
   console.log('Bottom Left Selected!')
 }
 
-const onBottomCenter = function (event) {
+const onIndexSeven = function (event) {
   console.log('Bottom Center Selected!')
 }
 
-const onBottomRight = function (event) {
+const onIndexEight = function (event) {
   console.log('Bottom Right Selected!')
 }
 
@@ -114,13 +134,13 @@ module.exports = {
   onChangePasswords: onChangePasswords,
   onSignOut: onSignOut,
   onNewGame: onNewGame,
-  onTopLeft: onTopLeft,
-  onTopCenter: onTopCenter,
-  onTopRight: onTopRight,
-  onMiddleLeft: onMiddleLeft,
-  onMiddleCenter: onMiddleCenter,
-  onMiddleRight: onMiddleRight,
-  onBottomLeft: onBottomLeft,
-  onBottomCenter: onBottomCenter,
-  onBottomRight: onBottomRight
+  onIndexZero: onIndexZero,
+  onIndexOne: onIndexOne,
+  onIndexTwo: onIndexTwo,
+  onIndexThree: onIndexThree,
+  onIndexFour: onIndexFour,
+  onIndexFive: onIndexFive,
+  onIndexSix: onIndexSix,
+  onIndexSeven: onIndexSeven,
+  onIndexEight: onIndexEight
 }

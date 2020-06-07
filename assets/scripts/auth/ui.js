@@ -18,6 +18,8 @@ const signInSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Alright! Time to play!').show()
   $('#message').removeClass().addClass('success')
+  $('#changepw').show()
+  $('#newgame').show()
   console.log(response)
   store.user = response.user
 }
@@ -58,12 +60,41 @@ const newGameSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('New Game success!').show()
   $('#message').removeClass().addClass('success')
-  store.user = response.game
+  store.game = response.game
+  $('.row').show().css('display', 'row')
 }
 
 const newGameFailure = function () {
   $('form').trigger('reset')
   $('#message').text('Oh no! New Game failed. Ask the developer to fix the code!')
+  $('#message').removeClass().addClass('failure')
+}
+
+const indexZeroSuccess = function (response) {
+  console.log(response)
+  $('#message').text('Move recorded!').show()
+  $('#message').removeClass().addClass('success')
+  $('.index-zero').text('X')
+  store.game = response.game
+}
+
+const indexZeroFailure = function (response) {
+  console.log(response)
+  $('#message').text('Move not recorded!').show()
+  $('#message').removeClass().addClass('failure')
+}
+
+const indexOneSuccess = function (response) {
+  console.log(response)
+  $('#message').text('Move recorded!').show()
+  $('#message').removeClass().addClass('success')
+  $('.index-one').text('X')
+  store.game = response.game
+}
+
+const indexOneFailure = function (response) {
+  console.log(response)
+  $('#message').text('Move not recorded!').show()
   $('#message').removeClass().addClass('failure')
 }
 
@@ -77,5 +108,9 @@ module.exports = {
   signOutSuccess: signOutSuccess,
   signOutFailure: signOutFailure,
   newGameSuccess: newGameSuccess,
-  newGameFailure: newGameFailure
+  newGameFailure: newGameFailure,
+  indexZeroSuccess: indexZeroSuccess,
+  indexZeroFailure: indexZeroFailure,
+  indexOneSuccess: indexOneSuccess,
+  indexOneFailure: indexOneFailure
 }
