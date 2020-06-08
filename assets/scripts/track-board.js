@@ -1,6 +1,6 @@
 'use strict'
-let score = 0
-
+let xTurn = 0
+let oTurn = 0
 
 module.exports = {
 

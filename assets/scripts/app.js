@@ -22,4 +22,5 @@ $(() => {
   $('#index-six').on('click', authEvents.onIndexSix)
   $('#index-seven').on('click', authEvents.onIndexSeven)
   $('#index-eight').on('click', authEvents.onIndexEight)
+  // $('.index-tile').on('click', authEvents.onIndexTile)
 })

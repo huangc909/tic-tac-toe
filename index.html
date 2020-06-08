@@ -16,7 +16,13 @@
       <main>
         <p id="message"></p>
 
-        <section>
+        <!-- <section id="signuphere">
+          <div>
+            <button id="sign-up-here">Sign up</button>
+          </div>
+        </section> -->
+
+        <section id="signup">
           <h3>Sign Up</h3>
           <form id="sign-up">
             <input name="credentials[email]" type="email" placeholder="Email" required>
@@ -37,7 +43,7 @@
           <br />
         </section>
 
-        <section>
+        <section id="signout">
           <form id="sign-out">
             <button type="submit">Sign Out</button>
           </form>
@@ -66,18 +72,20 @@
         </section>
 
         <section>
-          <div class="row">
-            <div id="index-zero" class="col-4 box" data-cell-index='0'><p class="index-zero"></p></div>
-            <div id="index-one"  class="col-4 box" data-cell-index='1'><p class="index-one"></p></div>
-            <div id="index-two"  class="col-4 box" data-cell-index='2'></div>
+          <div class="container">
+            <div class="row">
+              <div id="index-zero" class="col-4 box index-tile" data-cell-index='0'><p class="index-zero"></p></div>
+              <div id="index-one" class="col-4 box index-tile" data-cell-index='1'><p class="index-one"></p></div>
+              <div id="index-two" class="col-4 box index-tile" data-cell-index='2'></div>
 
-            <div id="index-three"  class="col-4 box" data-cell-index='3'></div>
-            <div id="index-four" class="col-4 box" data-cell-index='4'></div>
-            <div id="index-five" class="col-4 box" data-cell-index='5'></div>
+              <div id="index-three" class="col-4 box index-tile" data-cell-index='3'></div>
+              <div id="index-four" class="col-4 box index-tile" data-cell-index='4'></div>
+              <div id="index-five" class="col-4 box index-tile" data-cell-index='5'></div>
 
-            <div id="index-six" class="col-4 box" data-cell-index='6'></div>
-            <div id="index-seven" class="col-4 box" data-cell-index='7'></div>
-            <div id="index-eight" class="col-4 box" data-cell-index='8'></div>
+              <div id="index-six" class="col-4 box index-tile" data-cell-index='6'></div>
+              <div id="index-seven" class="col-4 box index-tile" data-cell-index='7'></div>
+              <div id="index-eight" class="col-4 box index-tile" data-cell-index='8'></div>
+            </div>
           </div>
         </section>
       </main>

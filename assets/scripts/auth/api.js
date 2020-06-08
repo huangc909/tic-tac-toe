@@ -68,6 +68,29 @@ const newGame = function (formData) {
     data: ''
   })
 }
+//
+// const indexTile = function (updateData) {
+//   console.log(updateData)
+//   const tileSelected = store.game.cells
+//   for (let i = 0; i < tileSelected.length; i++) {
+//     return $.ajax({
+//       method: 'PATCH',
+//       url: config.apiUrl + '/games/' + store.game._id,
+//       headers: {
+//         Authorization: 'Token token=' + store.user.token
+//       },
+//       data: {
+//         game: {
+//           cell: {
+//             index: tileSelected[i],
+//             value: 'x'
+//           },
+//           over: false
+//         }
+//       }
+//     })
+//   }
+// }
 
 const indexZero = function (updateData) {
   console.log(updateData)
@@ -101,7 +124,147 @@ const indexOne = function (updateData) {
       game: {
         cell: {
           index: 1,
+          value: 'o'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexTwo = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 2,
+          value: 'o'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexThree = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 3,
           value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexFour = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 4,
+          value: 'o'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexFive = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 5,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexSix = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 6,
+          value: 'o'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexSeven = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 7,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexEight = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 8,
+          value: 'o'
         },
         over: false
       }
@@ -116,5 +279,13 @@ module.exports = {
   signOut: signOut,
   newGame: newGame,
   indexZero: indexZero,
-  indexOne: indexOne
+  indexOne: indexOne,
+  indexTwo: indexTwo,
+  indexThree: indexThree,
+  indexFour: indexFour,
+  indexFive: indexFive,
+  indexSix: indexSix,
+  indexSeven: indexSeven,
+  indexEight: indexEight
+  // indexTile: indexTile
 }

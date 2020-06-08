@@ -9,7 +9,19 @@ $font-color: $light;
   color: red;
 }
 
+body {
+  margin: 30px;
+}
+
+// #signup {
+//   display: none
+// }
+
 #changepw {
+  display: none;
+}
+
+#signout {
   display: none;
 }
 
@@ -17,9 +29,9 @@ $font-color: $light;
   display: none;
 }
 
-// .row {
-//   display: none;
-// }
+.container {
+  display: none;
+}
 
 .box {
   align-items: center;
