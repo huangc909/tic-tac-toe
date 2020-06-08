@@ -68,7 +68,7 @@ const newGame = function (formData) {
     data: ''
   })
 }
-//
+
 // const indexTile = function (updateData) {
 //   console.log(updateData)
 //   const tileSelected = store.game.cells
@@ -91,8 +91,7 @@ const newGame = function (formData) {
 //     })
 //   }
 // }
-
-const indexZero = function (updateData) {
+const indexTileX = function (updateData) {
   console.log(updateData)
   return $.ajax({
     method: 'PATCH',
@@ -112,7 +111,68 @@ const indexZero = function (updateData) {
   })
 }
 
-const indexOne = function (updateData) {
+const indexZero = function (selected, tile, player) {
+  console.log(tile)
+  console.log(player)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: tile,
+          value: player
+        },
+        over: false
+      }
+    }
+  })
+}
+
+// const indexZeroO = function (updateData) {
+//   console.log(updateData)
+//   return $.ajax({
+//     method: 'PATCH',
+//     url: config.apiUrl + '/games/' + store.game._id,
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: {
+//       game: {
+//         cell: {
+//           index: 0,
+//           value: 'o'
+//         },
+//         over: false
+//       }
+//     }
+//   })
+// }
+
+const indexOneX = function (updateData) {
+  console.log(updateData)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 1,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+const indexOneO = function (updateData) {
   console.log(updateData)
   return $.ajax({
     method: 'PATCH',
@@ -279,7 +339,9 @@ module.exports = {
   signOut: signOut,
   newGame: newGame,
   indexZero: indexZero,
-  indexOne: indexOne,
+  // indexZeroO: indexZeroO,
+  indexOneX: indexOneX,
+  indexOneO: indexOneO,
   indexTwo: indexTwo,
   indexThree: indexThree,
   indexFour: indexFour,

@@ -76,24 +76,55 @@ const indexZeroSuccess = function (response) {
   store.game = response.game
   $('#message').text('Move recorded!').show()
   $('#message').removeClass().addClass('success')
-  $('#index-zero').text('X')
+  if (store.game.cells[0] === 'x') {
+    $('#index-zero').text('X')
+  } else if (store.game.cells[0] === 'o') {
+    $('#index-zero').text('O')
+  }
 }
 
 const indexZeroFailure = function (response) {
+  $('#message').text('Move not recorded!').show()
+  $('#message').removeClass().addClass('failure')
+}
+
+// const indexZeroOSuccess = function (response) {
+//   console.log(response)
+//   store.game = response.game
+//   $('#message').text('Move recorded!').show()
+//   $('#message').removeClass().addClass('success')
+//   $('#index-zero').text('O')
+// }
+//
+// const indexZeroOFailure = function (response) {
+//   console.log(response)
+//   $('#message').text('Move not recorded!').show()
+//   $('#message').removeClass().addClass('failure')
+// }
+
+const indexOneXSuccess = function (response) {
+  console.log(response)
+  store.game = response.game
+  $('#message').text('Move recorded!').show()
+  $('#message').removeClass().addClass('success')
+  $('#index-one').text('X')
+}
+
+const indexOneXFailure = function (response) {
   console.log(response)
   $('#message').text('Move not recorded!').show()
   $('#message').removeClass().addClass('failure')
 }
 
-const indexOneSuccess = function (response) {
+const indexOneOSuccess = function (response) {
   console.log(response)
+  store.game = response.game
   $('#message').text('Move recorded!').show()
   $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-one').text('X')
+  $('#index-one').text('O')
 }
 
-const indexOneFailure = function (response) {
+const indexOneOFailure = function (response) {
   console.log(response)
   $('#message').text('Move not recorded!').show()
   $('#message').removeClass().addClass('failure')
@@ -227,8 +258,12 @@ module.exports = {
   newGameFailure: newGameFailure,
   indexZeroSuccess: indexZeroSuccess,
   indexZeroFailure: indexZeroFailure,
-  indexOneSuccess: indexOneSuccess,
-  indexOneFailure: indexOneFailure,
+  // indexZeroOSuccess: indexZeroOSuccess,
+  // indexZeroOFailure: indexZeroOFailure,
+  indexOneXSuccess: indexOneXSuccess,
+  indexOneXFailure: indexOneXFailure,
+  indexOneOSuccess: indexOneOSuccess,
+  indexOneOFailure: indexOneOFailure,
   indexTwoSuccess: indexTwoSuccess,
   indexTwoFailure: indexTwoFailure,
   indexThreeSuccess: indexThreeSuccess,
