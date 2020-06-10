@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./../store')
+// const events = require('./events')
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
@@ -18,10 +19,13 @@ const signInSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Alright! Time to play!').show()
   $('#message').removeClass().addClass('success')
+  $('#signup').hide()
   $('#changepw').show()
   $('#newgame').show()
+  $('#signout').show()
   console.log(response)
   store.user = response.user
+  $('#signin').hide()
 }
 
 const signInFailure = function () {
@@ -47,7 +51,14 @@ const signOutSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Sign out success!').show()
   $('#message').removeClass().addClass('success')
-  $('#signout').show()
+  $('#signup').show()
+  $('#signin').show()
+  $('#changepw').hide()
+  $('#signout').hide()
+  $('#newgame').hide()
+  $('#result').hide()
+  $('#tracker').hide()
+  $('#gameboard').hide()
 }
 
 const signOutFailure = function () {
@@ -62,7 +73,9 @@ const newGameSuccess = function (response) {
   $('#message').text('New Game success!').show()
   $('#message').removeClass().addClass('success')
   store.game = response.game
-  $('.container').show()
+  $('#result').show()
+  $('#tracker').show().text("It is X's turn!")
+  $('#gameboard').show()
 }
 
 const newGameFailure = function () {
@@ -71,213 +84,54 @@ const newGameFailure = function () {
   $('#message').removeClass().addClass('failure')
 }
 
-const indexZeroSuccess = function (response) {
-  console.log(response)
+const updateBoardSuccess = function (response, cell, player) {
+  console.log(response, cell, player)
   store.game = response.game
+  const cellVal = store.game.cells
   $('#message').text('Move recorded!').show()
   $('#message').removeClass().addClass('success')
-  if (store.game.cells[0] === 'x') {
-    $('#index-zero').text('X')
-  } else if (store.game.cells[0] === 'o') {
-    $('#index-zero').text('O')
+  if (
+    ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[1] && cellVal[0] === cellVal[2])) ||
+    ((cellVal[3] === 'x' || cellVal[3] === 'o') && (cellVal[3] === cellVal[4] && cellVal[3] === cellVal[5])) ||
+    ((cellVal[6] === 'x' || cellVal[6] === 'o') && (cellVal[6] === cellVal[7] && cellVal[6] === cellVal[8])) ||
+    ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[3] && cellVal[0] === cellVal[6])) ||
+    ((cellVal[1] === 'x' || cellVal[1] === 'o') && (cellVal[1] === cellVal[4] && cellVal[1] === cellVal[7])) ||
+    ((cellVal[2] === 'x' || cellVal[2] === 'o') && (cellVal[2] === cellVal[5] && cellVal[2] === cellVal[8])) ||
+    ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[4] && cellVal[0] === cellVal[8])) ||
+    ((cellVal[6] === 'x' || cellVal[6] === 'o') && (cellVal[6] === cellVal[4] && cellVal[6] === cellVal[2]))
+  ) {
+    $('#result').text(`${player} has won!`)
+    $('#tracker').hide()
+  } else {
+    // test function named 'hasValue' that determines currentValue is either 'o' or 'x'
+    const hasValue = (currentValue) => currentValue === 'o' || currentValue === 'x'
+    // console log if the .every method is true or false after each move
+    console.log(cellVal.every(hasValue))
+    // if all values are either 'o' or 'x',
+    if (cellVal.every(hasValue) === true) {
+      // show result message
+      $('#result').text('There is a tie!')
+      $('#tracker').hide()
+    }
   }
 }
 
-const indexZeroFailure = function (response) {
+const updateBoardFailure = function (response) {
   $('#message').text('Move not recorded!').show()
   $('#message').removeClass().addClass('failure')
 }
-
-// const indexZeroOSuccess = function (response) {
-//   console.log(response)
-//   store.game = response.game
-//   $('#message').text('Move recorded!').show()
-//   $('#message').removeClass().addClass('success')
-//   $('#index-zero').text('O')
-// }
-//
-// const indexZeroOFailure = function (response) {
-//   console.log(response)
-//   $('#message').text('Move not recorded!').show()
-//   $('#message').removeClass().addClass('failure')
-// }
-
-const indexOneXSuccess = function (response) {
-  console.log(response)
-  store.game = response.game
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  $('#index-one').text('X')
-}
-
-const indexOneXFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexOneOSuccess = function (response) {
-  console.log(response)
-  store.game = response.game
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  $('#index-one').text('O')
-}
-
-const indexOneOFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexTwoSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-two').text('X')
-}
-
-const indexTwoFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexThreeSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-three').text('X')
-}
-
-const indexThreeFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexFourSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-four').text('X')
-}
-
-const indexFourFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexFiveSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-five').text('X')
-}
-
-const indexFiveFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexSixSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-six').text('X')
-}
-
-const indexSixFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexSevenSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-seven').text('X')
-}
-
-const indexSevenFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-const indexEightSuccess = function (response) {
-  console.log(response)
-  $('#message').text('Move recorded!').show()
-  $('#message').removeClass().addClass('success')
-  store.game = response.game
-  $('#index-eight').text('X')
-}
-
-const indexEightFailure = function (response) {
-  console.log(response)
-  $('#message').text('Move not recorded!').show()
-  $('#message').removeClass().addClass('failure')
-}
-
-// const indexTileSuccess = function (response) {
-//   console.log(response)
-//   store.game = response.game
-//   const tileSelected = store.game.cells
-//   for (let i = 0; i < tileSelected.length; i++) {
-//     $('#message').text('Move recorded!').show()
-//     $('#message').removeClass().addClass('success')
-//     console.log(tileSelected[i])
-//   }
-// }
-//
-// const indexTileFailure = function (response) {
-//   console.log(response)
-//   $('#message').text('Move not recorded!').show()
-//   $('#message').removeClass().addClass('failure')
-// }
 
 module.exports = {
-  signUpSuccess: signUpSuccess,
-  signUpFailure: signUpFailure,
-  signInSuccess: signInSuccess,
-  signInFailure: signInFailure,
-  changePasswordSuccess: changePasswordSuccess,
-  changePasswordFailure: changePasswordFailure,
-  signOutSuccess: signOutSuccess,
-  signOutFailure: signOutFailure,
-  newGameSuccess: newGameSuccess,
-  newGameFailure: newGameFailure,
-  indexZeroSuccess: indexZeroSuccess,
-  indexZeroFailure: indexZeroFailure,
-  // indexZeroOSuccess: indexZeroOSuccess,
-  // indexZeroOFailure: indexZeroOFailure,
-  indexOneXSuccess: indexOneXSuccess,
-  indexOneXFailure: indexOneXFailure,
-  indexOneOSuccess: indexOneOSuccess,
-  indexOneOFailure: indexOneOFailure,
-  indexTwoSuccess: indexTwoSuccess,
-  indexTwoFailure: indexTwoFailure,
-  indexThreeSuccess: indexThreeSuccess,
-  indexThreeFailure: indexThreeFailure,
-  indexFourSuccess: indexFourSuccess,
-  indexFourFailure: indexFourFailure,
-  indexFiveSuccess: indexFiveSuccess,
-  indexFiveFailure: indexFiveFailure,
-  indexSixSuccess: indexSixSuccess,
-  indexSixFailure: indexSixFailure,
-  indexSevenSuccess: indexSevenSuccess,
-  indexSevenFailure: indexSevenFailure,
-  indexEightSuccess: indexEightSuccess,
-  indexEightFailure: indexEightFailure
-  // indexTileSuccess: indexTileSuccess,
-  // indexTileFailure: indexTileFailure
+  signUpSuccess,
+  signUpFailure,
+  signInSuccess,
+  signInFailure,
+  changePasswordSuccess,
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure,
+  newGameSuccess,
+  newGameFailure,
+  updateBoardSuccess,
+  updateBoardFailure
 }

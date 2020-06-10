@@ -33,7 +33,7 @@
           <br />
         </section>
 
-        <section>
+        <section id="signin">
           <h3>Sign In</h3>
           <form id="sign-in">
             <input name="credentials[email]" type="email" placeholder="Email" required>
@@ -68,23 +68,29 @@
         </section>
 
         <section>
-          <p id="tracker"></p>
+          <div>
+            <p id="result"></p>
+          </div>
         </section>
 
         <section>
+          <p id="tracker"></p>
+        </section>
+
+        <section id="gameboard">
           <div class="container">
             <div class="row">
-              <div id="index-zero" class="col-4 box index-tile" data-cell-index='0'><p class="index-zero"></p></div>
-              <div id="index-one" class="col-4 box index-tile" data-cell-index='1'><p class="index-one"></p></div>
-              <div id="index-two" class="col-4 box index-tile" data-cell-index='2'></div>
+              <div data-id=0 class="col-4 box index-tile"></div>
+              <div data-id=1 class="col-4 box index-tile"></div>
+              <div data-id=2 class="col-4 box index-tile"></div>
 
-              <div id="index-three" class="col-4 box index-tile" data-cell-index='3'></div>
-              <div id="index-four" class="col-4 box index-tile" data-cell-index='4'></div>
-              <div id="index-five" class="col-4 box index-tile" data-cell-index='5'></div>
+              <div data-id=3 class="col-4 box index-tile"></div>
+              <div  data-id=4 class="col-4 box index-tile"></div>
+              <div  data-id=5 class="col-4 box index-tile"></div>
 
-              <div id="index-six" class="col-4 box index-tile" data-cell-index='6'></div>
-              <div id="index-seven" class="col-4 box index-tile" data-cell-index='7'></div>
-              <div id="index-eight" class="col-4 box index-tile" data-cell-index='8'></div>
+              <div data-id=6 class="col-4 box index-tile"></div>
+              <div data-id=7 class="col-4 box index-tile"></div>
+              <div data-id=8 class="col-4 box index-tile"></div>
             </div>
           </div>
         </section>
