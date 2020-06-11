@@ -90,11 +90,24 @@ const updateBoard = function (cell, player) {
   })
 }
 
+const getGames = function (formData) {
+  console.log(formData)
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: ''
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   newGame,
-  updateBoard
+  updateBoard,
+  getGames
 }

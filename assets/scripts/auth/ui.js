@@ -2,10 +2,17 @@
 
 const store = require('./../store')
 // const events = require('./events')
+// let xWinCount = 0
+// let oWinCount = 0
+// let tieCount = 0
+//
+// $('#xWins span').text(`${xWinCount}`)
+// $('#oWins span').text(`${oWinCount}`)
+// $('#ties span').text(`${tieCount}`)
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Wahoo! Sign-up was successful!').show()
+  $('#message').text('Sign up success').show()
   $('#message').removeClass().addClass('success')
 }
 
@@ -17,12 +24,13 @@ const signUpFailure = function () {
 
 const signInSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Alright! Time to play!').show()
+  $('#message').text('Sign in success').show()
   $('#message').removeClass().addClass('success')
   $('#signup').hide()
   $('#changepw').show()
   $('#newgame').show()
   $('#signout').show()
+  $('#getgames').show()
   console.log(response)
   store.user = response.user
   $('#signin').hide()
@@ -36,7 +44,7 @@ const signInFailure = function () {
 
 const changePasswordSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Password change success!').show()
+  $('#message').text('Password change success').show()
   $('#message').removeClass().addClass('success')
   console.log(response)
 }
@@ -49,16 +57,15 @@ const changePasswordFailure = function () {
 
 const signOutSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign out success!').show()
+  $('#message').text('Sign out success').show()
   $('#message').removeClass().addClass('success')
   $('#signup').show()
   $('#signin').show()
   $('#changepw').hide()
   $('#signout').hide()
   $('#newgame').hide()
-  $('#result').hide()
   $('#tracker').hide()
-  $('#gameboard').hide()
+  $('#game-board').hide()
 }
 
 const signOutFailure = function () {
@@ -73,14 +80,14 @@ const newGameSuccess = function (response) {
   $('#message').text('New Game success!').show()
   $('#message').removeClass().addClass('success')
   store.game = response.game
-  $('#result').show()
+  $('#score-board').show()
   $('#tracker').show().text("It is X's turn!")
-  $('#gameboard').show()
+  $('#game-board').show()
 }
 
 const newGameFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Oh no! New Game failed. Ask the developer to fix the code!')
+  $('#message').text('Oh no! New Game failed.')
   $('#message').removeClass().addClass('failure')
 }
 
@@ -100,8 +107,13 @@ const updateBoardSuccess = function (response, cell, player) {
     ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[4] && cellVal[0] === cellVal[8])) ||
     ((cellVal[6] === 'x' || cellVal[6] === 'o') && (cellVal[6] === cellVal[4] && cellVal[6] === cellVal[2]))
   ) {
-    $('#result').text(`${player} has won!`)
-    $('#tracker').hide()
+    $('#tracker').text(`${player} has won!`)
+    store.game.over = true
+    // if (player === 'x') {
+    //   xWinCount++
+    // } else if (player === 'o') {
+    //   oWinCount++
+    // }
   } else {
     // test function named 'hasValue' that determines currentValue is either 'o' or 'x'
     const hasValue = (currentValue) => currentValue === 'o' || currentValue === 'x'
@@ -110,14 +122,43 @@ const updateBoardSuccess = function (response, cell, player) {
     // if all values are either 'o' or 'x',
     if (cellVal.every(hasValue) === true) {
       // show result message
-      $('#result').text('There is a tie!')
-      $('#tracker').hide()
+      $('#tracker').text('There is a tie!')
+      store.game.over = true
+      // tieCount++
     }
   }
 }
 
 const updateBoardFailure = function (response) {
   $('#message').text('Move not recorded!').show()
+  $('#message').removeClass().addClass('failure')
+}
+
+const getGamesSuccess = function (response) {
+  console.log(response)
+
+  $('#message').text('Get game history successful!').show()
+  $('#message').removeClass().addClass('success')
+
+  store.games = response.games
+  let gamesHtml = ''
+
+  store.games.forEach(game => {
+    const oneGame = (`
+      <p>Game Result:${game.cells}</p>
+      <p>ID: ${game._id}</p>
+      <p>Date Created: ${game.createdAt}</p>
+      <p>Updated On: ${game.updatedAt}</p>
+      <br>
+    `)
+    gamesHtml = gamesHtml + oneGame
+  })
+
+  $('#get-games').html(gamesHtml)
+}
+
+const getGamesFailure = function (response) {
+  $('#message').text('Get games failed!').show()
   $('#message').removeClass().addClass('failure')
 }
 
@@ -133,5 +174,7 @@ module.exports = {
   newGameSuccess,
   newGameFailure,
   updateBoardSuccess,
-  updateBoardFailure
+  updateBoardFailure,
+  getGamesSuccess,
+  getGamesFailure
 }

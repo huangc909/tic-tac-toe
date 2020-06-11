@@ -2,8 +2,6 @@
 
 const api = require('./api')
 const ui = require('./ui')
-const store = require('./../store')
-
 const getFormFields = require('./../../../lib/get-form-fields')
 
 let turn = true
@@ -77,12 +75,9 @@ const onNewGame = function (event) {
   turn = true
 
   $('.box').empty()
-  $('#result').empty()
-}
 
-// const onSelectedTile = function (event) {
-//   console.log('hi')
-// }
+  $('#tracker').empty()
+}
 
 const onSelectedTile = function (event) {
   console.log(event)
@@ -92,24 +87,24 @@ const onSelectedTile = function (event) {
   // if turn is true, then it is 'x',
   // if turn is false, then it is 'o'
   const player = turn ? 'x' : 'o'
-  if ($('#result').text() === 'x has won!' || $('#result').text() === 'o has won!' || $('#result').text() === 'There is a tie!') {
+  if ($('#tracker').text() === 'x has won!' || $('#tracker').text() === 'o has won!' || $('#tracker').text() === 'There is a tie!') {
   } else {
   // if the event target's HTML text is empty,
     if ($(event.target).text() === '') {
-    // and if turn is true,
+    // if turn is true,
       if (turn) {
         // add 'x' to the innerHTML
         $(event.target).text('x')
         // change turn true to the inverse (false)
         turn = !turn
-        $('#tracker').text("It is O's turn!")
+        $('#tracker').text("It is o's turn!")
         // if turn is not true,
       } else {
         // add 'o' to the innerHTML
         $(event.target).text('o')
         // change turn false to the inverse (true)
         turn = !turn
-        $('#tracker').text("It is X's turn!")
+        $('#tracker').text("It is x's turn!")
       }
       // pass the cell and player to the api
       api.updateBoard(cell, player)
@@ -122,11 +117,37 @@ const onSelectedTile = function (event) {
   }
 }
 
+const onGetGames = function (event) {
+  event.preventDefault()
+
+  const form = event.target
+  const data = getFormFields(form)
+
+  console.log(event)
+  console.log(data)
+
+  api.getGames(data)
+    .then(ui.getGamesSuccess)
+    .catch(ui.getGamesFailure)
+}
+
+// const score = function (player) {
+//   if (player === 'x') {
+//     xWinCount++
+//   } else if (player === 'o') {
+//     oWinCount++
+//   } else if (player === true) {
+//     tieCount++
+//   }
+// }
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePasswords,
   onSignOut,
   onNewGame,
-  onSelectedTile
+  onSelectedTile,
+  onGetGames
+  // score
 }
