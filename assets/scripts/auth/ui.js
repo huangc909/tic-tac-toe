@@ -12,41 +12,47 @@ const store = require('./../store')
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign up success').show()
+  $('#message').text('Sign Up success! Please sign in below.').show()
   $('#message').removeClass().addClass('success')
+  $('.signin').show()
 }
 
 const signUpFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Sign up failed. Try again!')
+  $('#message').text('Sign Up failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
 const signInSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign in success').show()
+  $('#message').text('Sign In success!').show()
   $('#message').removeClass().addClass('success')
   $('.signup').hide()
   $('.signin').hide()
-  $('.signout').show()
-  $('.changepw').show()
+  $('.getsignoutbutton').show()
+  $('.getsignupbutton').hide()
+  $('getsignoutbutton').hide()
   $('.newgame').show()
-  $('.getgames').show()
+
+  $('.getplayersinfobutton').show()
   console.log(response)
   store.user = response.user
 }
 
 const signInFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Sign in failed. Try again!')
+  $('#message').text('Sign In failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
 const signOutSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign out success').show()
+  $('#message').text('Sign Out success!').show().delay(700).fadeOut(1500)
   $('#message').removeClass().addClass('success')
-  $('.signup').show()
+  $('getplayersinfobutton').hide()
+  $('getsigninbutton').hide()
+  $('getsignupbutton').show()
+  $('.signup').hide()
   $('.signin').show()
   $('.changepw').hide()
   $('.signout').hide()
@@ -58,20 +64,20 @@ const signOutSuccess = function (response) {
 
 const signOutFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Oh no! Sign out failed. Try again!')
+  $('#message').text('Sign Out failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
 const changePasswordSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Password change success').show()
+  $('#message').text('Password Change success').show()
   $('#message').removeClass().addClass('success')
   console.log(response)
 }
 
 const changePasswordFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Password change failed. Try again!')
+  $('#message').text('Password Change failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
@@ -95,7 +101,7 @@ const updateBoardSuccess = function (response, cell, player) {
   console.log(response, cell, player)
   store.game = response.game
   const cellVal = store.game.cells
-  $('#message').text('Move recorded!').show()
+  $('#message').text('Move Recorded!').show()
   $('#message').removeClass().addClass('success')
   if (
     ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[1] && cellVal[0] === cellVal[2])) ||
@@ -132,7 +138,7 @@ const updateBoardFailure = function (response) {
 const getGamesSuccess = function (response) {
   console.log(response)
 
-  $('#message').text('Get game history successful!').show()
+  $('#message').text('Get Game History success!').show()
   $('#message').removeClass().addClass('success')
 
   store.games = response.games
@@ -153,7 +159,7 @@ const getGamesSuccess = function (response) {
 }
 
 const getGamesFailure = function (response) {
-  $('#message').text('Get games failed!').show()
+  $('#message').text('Get Game History failed!').show()
   $('#message').removeClass().addClass('failure')
 }
 

@@ -6,6 +6,25 @@ const getFormFields = require('./../../../lib/get-form-fields')
 
 let turn = true
 
+const onGetSignUp = function (event) {
+  $('.getsignupbutton').hide()
+  $('.getsigninbutton').show()
+  $('.signin').hide()
+  $('.signup').show()
+}
+
+const onGetSignIn = function (event) {
+  $('.getsignupbutton').show()
+  $('.getsigninbutton').hide()
+  $('.signin').show()
+  $('.signup').hide()
+}
+
+const onGetPlayersInfo = function (event) {
+  $('.changepw').show()
+  $('.getgames').show()
+}
+
 const onSignUp = function (event) {
   event.preventDefault()
 
@@ -132,6 +151,9 @@ const onGetGames = function (event) {
 }
 
 module.exports = {
+  onGetSignUp,
+  onGetSignIn,
+  onGetPlayersInfo,
   onSignUp,
   onSignIn,
   onChangePassword,
