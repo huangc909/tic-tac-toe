@@ -16,13 +16,7 @@
       <main>
         <p id="message"></p>
 
-        <!-- <section id="signuphere">
-          <div>
-            <button id="sign-up-here">Sign up</button>
-          </div>
-        </section> -->
-
-        <section id="signup">
+        <section class="signup">
           <h3>Sign Up</h3>
           <form id="sign-up">
             <input name="credentials[email]" type="email" placeholder="Email" required>
@@ -33,7 +27,7 @@
           <br />
         </section>
 
-        <section id="signin">
+        <section class="signin">
           <h3>Sign In</h3>
           <form id="sign-in">
             <input name="credentials[email]" type="email" placeholder="Email" required>
@@ -43,14 +37,14 @@
           <br />
         </section>
 
-        <section id="signout">
+        <section class="signout">
           <form id="sign-out">
             <button type="submit">Sign Out</button>
           </form>
           <br />
         </section>
 
-        <section id="changepw">
+        <section class="changepw">
           <h3>Change Password</h3>
           <form id="change-password">
             <input name="passwords[old]" type="password" placeholder="Old Password" required>
@@ -60,34 +54,20 @@
           <br />
         </section>
 
-        <section id="newgame">
+        <section class="newgame">
           <form id="new-game">
             <button type="submit">New Game</button>
           </form>
           <br />
         </section>
 
-        <!-- <section>
-          <div id="score-board">
-            <p id="xWins">X's Wins: <span></span></p>
-            <p id="oWins">O's Wins: <span></span></p>
-            <p id="ties">Ties: <span></span></p>
-          </div>
-        </section> -->
-
-        <!-- <section>
-          <div>
-            <p id="result"></p>
-          </div>
-        </section> -->
-
         <section>
-          <p id="tracker"></p>
+          <p class="tracker"></p>
         </section>
 
-        <section id="game-board">
+        <section class="gameboard">
           <div class="container">
-            <div class="row">
+            <div class="row h-100 board">
               <div data-id=0 class="col-4 box index-tile"></div>
               <div data-id=1 class="col-4 box index-tile"></div>
               <div data-id=2 class="col-4 box index-tile"></div>
@@ -103,11 +83,13 @@
           </div>
         </section>
 
-        <section id="getgames">
+        <section class="getgames">
           <h3>Game History</h3>
           <form id="get-games">
             <button type="submit">Display all of your previous games!</button>
           </form>
+          <div class=gamelist>
+          </div>
           <br />
         </section>
       </main>

@@ -18,7 +18,7 @@ const signUpSuccess = function (response) {
 
 const signUpFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Oh no! Sign up failed. Try again!')
+  $('#message').text('Sign up failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
@@ -26,19 +26,39 @@ const signInSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Sign in success').show()
   $('#message').removeClass().addClass('success')
-  $('#signup').hide()
-  $('#changepw').show()
-  $('#newgame').show()
-  $('#signout').show()
-  $('#getgames').show()
+  $('.signup').hide()
+  $('.signin').hide()
+  $('.signout').show()
+  $('.changepw').show()
+  $('.newgame').show()
+  $('.getgames').show()
   console.log(response)
   store.user = response.user
-  $('#signin').hide()
 }
 
 const signInFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Oh no! Sign in failed. Try again!')
+  $('#message').text('Sign in failed. Try again!')
+  $('#message').removeClass().addClass('failure')
+}
+
+const signOutSuccess = function (response) {
+  $('form').trigger('reset')
+  $('#message').text('Sign out success').show()
+  $('#message').removeClass().addClass('success')
+  $('.signup').show()
+  $('.signin').show()
+  $('.changepw').hide()
+  $('.signout').hide()
+  $('.newgame').hide()
+  $('.tracker').hide()
+  $('.gameboard').hide()
+  $('.getgames').hide()
+}
+
+const signOutFailure = function () {
+  $('form').trigger('reset')
+  $('#message').text('Oh no! Sign out failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
@@ -51,26 +71,7 @@ const changePasswordSuccess = function (response) {
 
 const changePasswordFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Oh no! Password change failed. Try again!')
-  $('#message').removeClass().addClass('failure')
-}
-
-const signOutSuccess = function (response) {
-  $('form').trigger('reset')
-  $('#message').text('Sign out success').show()
-  $('#message').removeClass().addClass('success')
-  $('#signup').show()
-  $('#signin').show()
-  $('#changepw').hide()
-  $('#signout').hide()
-  $('#newgame').hide()
-  $('#tracker').hide()
-  $('#game-board').hide()
-}
-
-const signOutFailure = function () {
-  $('form').trigger('reset')
-  $('#message').text('Oh no! Sign out failed. Try again!')
+  $('#message').text('Password change failed. Try again!')
   $('#message').removeClass().addClass('failure')
 }
 
@@ -80,14 +81,13 @@ const newGameSuccess = function (response) {
   $('#message').text('New Game success!').show()
   $('#message').removeClass().addClass('success')
   store.game = response.game
-  $('#score-board').show()
-  $('#tracker').show().text("It is X's turn!")
-  $('#game-board').show()
+  $('.tracker').show().text("It is X's turn!")
+  $('.gameboard').show()
 }
 
 const newGameFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Oh no! New Game failed.')
+  $('#message').text('New Game failed.')
   $('#message').removeClass().addClass('failure')
 }
 
@@ -107,13 +107,8 @@ const updateBoardSuccess = function (response, cell, player) {
     ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[4] && cellVal[0] === cellVal[8])) ||
     ((cellVal[6] === 'x' || cellVal[6] === 'o') && (cellVal[6] === cellVal[4] && cellVal[6] === cellVal[2]))
   ) {
-    $('#tracker').text(`${player} has won!`)
+    $('.tracker').text(`${player} has won!`)
     store.game.over = true
-    // if (player === 'x') {
-    //   xWinCount++
-    // } else if (player === 'o') {
-    //   oWinCount++
-    // }
   } else {
     // test function named 'hasValue' that determines currentValue is either 'o' or 'x'
     const hasValue = (currentValue) => currentValue === 'o' || currentValue === 'x'
@@ -122,7 +117,7 @@ const updateBoardSuccess = function (response, cell, player) {
     // if all values are either 'o' or 'x',
     if (cellVal.every(hasValue) === true) {
       // show result message
-      $('#tracker').text('There is a tie!')
+      $('.tracker').text('It is a tie!')
       store.game.over = true
       // tieCount++
     }
@@ -154,7 +149,7 @@ const getGamesSuccess = function (response) {
     gamesHtml = gamesHtml + oneGame
   })
 
-  $('#get-games').html(gamesHtml)
+  $('.gamelist').html(gamesHtml)
 }
 
 const getGamesFailure = function (response) {
