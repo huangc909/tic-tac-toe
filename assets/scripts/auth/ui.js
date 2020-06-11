@@ -31,17 +31,17 @@ const signInSuccess = function (response) {
   $('.signin').hide()
   $('.getsignoutbutton').show()
   $('.getsignupbutton').hide()
-  $('getsignoutbutton').hide()
+  $('.getsigninbutton').hide()
+  $('.getplayersinfobutton').show()
   $('.newgame').show()
 
-  $('.getplayersinfobutton').show()
   console.log(response)
   store.user = response.user
 }
 
 const signInFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Sign In failed. Try again!')
+  $('#message').text('Sign In failed. Try again or sign up!').show().delay(1200).fadeOut(1500)
   $('#message').removeClass().addClass('failure')
 }
 
