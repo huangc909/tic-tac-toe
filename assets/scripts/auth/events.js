@@ -23,6 +23,8 @@ const onGetSignIn = function (event) {
 const onGetPlayersInfo = function (event) {
   $('.changepw').show()
   $('.getgames').show()
+  $('.tracker').hide()
+  $('.gameboard').hide()
 }
 
 const onSignUp = function (event) {

@@ -47,7 +47,7 @@ const signInFailure = function () {
 
 const signOutSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign Out success!').show().delay(700).fadeOut(1500)
+  $('#message').text('Sign Out success!').show().delay(600).fadeOut(1500)
   $('#message').removeClass().addClass('success')
   $('getplayersinfobutton').hide()
   $('getsigninbutton').hide()

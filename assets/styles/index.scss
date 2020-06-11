@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-$font-color: $light;
+@import './variables.scss';
 
 .success {
   color: green;
@@ -14,27 +14,48 @@ body {
   text-align: center;
 }
 
-// .signup {
-//   display: none
-// }
+
+
+button {
+  border-radius: 10px;
+}
+
 .header {
   .row {
     .box1 {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       .getplayersinfobutton {
         display: none;
+        height: 30px;
+      }
+    }
+    .box2 {
+      margin: auto;
+      p {
+        font-family: $accent-font-family;
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
     .box3 {
       // background-color: blue;
       display: flex;
       justify-content: flex-start;
+      align-items: center;
+      .getsignupbutton {
+        height: 30px;
+      }
       .getsigninbutton {
         display: none;
+        height: 30px;
       }
       .getsignoutbutton {
         display: none;
+        height: 30px;
       }
     }
   }
@@ -43,8 +64,6 @@ body {
 .signup {
   display: none;
 }
-
-
 
 .changepw {
   display: none;
@@ -58,21 +77,22 @@ body {
   display: none;
 
   .container {
-    // set the whole board's height to take up 100% of the viewports height (browser height)
-    height: 100vh;
+    //viewports height (browser height)
+    height: 75vh;
 
     .board {
       // Set the margins to be auto
       // When the left & right margins are auto, they will be the same, which ends up centering the element (20px is from the top)
-      margin: 20 px auto;
+      margin: auto;
+      background-color: #6AC0DB;
       // Set the max size of the board 100vh means 100% of the browser's height
       // Subtract 75 px to give it some spacing at the bottom
-      max-height: calc(100vh - 75px);
-      max-width: calc(100vh - 75px);
+      max-height: calc(75vh - 15px);
+      max-width: calc(75vh - 15px);
 
       // Add background image to board:
       // background: url('') no-repeat center center;
-      background-size: cover;
+      // background-size: cover;
 
       .box {
         //borders: right and bottom of each box
@@ -113,9 +133,5 @@ body {
 }
 
 .changepw {
-  display: none;
-}
-
-.getgames {
   display: none;
 }
