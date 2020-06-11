@@ -49,9 +49,10 @@ const signOutSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Sign Out success!').show().delay(600).fadeOut(1500)
   $('#message').removeClass().addClass('success')
-  $('getplayersinfobutton').hide()
-  $('getsigninbutton').hide()
-  $('getsignupbutton').show()
+  $('.getplayersinfobutton').hide()
+  $('.getsignoutbutton').hide()
+  $('.getsigninbutton').hide()
+  $('.getsignupbutton').show()
   $('.signup').hide()
   $('.signin').show()
   $('.changepw').hide()
@@ -89,6 +90,8 @@ const newGameSuccess = function (response) {
   store.game = response.game
   $('.tracker').show().text("It is X's turn!")
   $('.gameboard').show()
+  $('.changepw').hide()
+  $('.getgames').hide()
 }
 
 const newGameFailure = function () {
@@ -114,6 +117,7 @@ const updateBoardSuccess = function (response, cell, player) {
     ((cellVal[6] === 'x' || cellVal[6] === 'o') && (cellVal[6] === cellVal[4] && cellVal[6] === cellVal[2]))
   ) {
     $('.tracker').text(`${player} has won!`)
+    $('#message').text('GAME OVER')
     store.game.over = true
   } else {
     // test function named 'hasValue' that determines currentValue is either 'o' or 'x'
@@ -124,6 +128,7 @@ const updateBoardSuccess = function (response, cell, player) {
     if (cellVal.every(hasValue) === true) {
       // show result message
       $('.tracker').text('It is a tie!')
+      $('#message').text('GAME OVER')
       store.game.over = true
       // tieCount++
     }
@@ -146,16 +151,17 @@ const getGamesSuccess = function (response) {
 
   store.games.forEach(game => {
     const oneGame = (`
-      <p>Game Result:${game.cells}</p>
-      <p>ID: ${game._id}</p>
-      <p>Date Created: ${game.createdAt}</p>
-      <p>Updated On: ${game.updatedAt}</p>
+      <p><strong>Game Result:</strong></p>
+      <p>${game.cells}</p>
+      <p><strong>ID:</strong> ${game._id}</p>
+      <p><strong>Date Created:</strong> ${game.createdAt}</p>
+      <p><strong>Updated On:</strong> ${game.updatedAt}</p>
       <br>
     `)
     gamesHtml = gamesHtml + oneGame
   })
 
-  $('.gamelist').html(gamesHtml)
+  $('.gamelist').html(gamesHtml).show()
 }
 
 const getGamesFailure = function (response) {

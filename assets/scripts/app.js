@@ -16,6 +16,6 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#new-game').on('submit', authEvents.onNewGame)
-  $('.gameboard').on('click', authEvents.onSelectedTile)
+  $('.game').on('click', authEvents.onSelectedTile)
   $('#get-games').on('submit', authEvents.onGetGames)
 })

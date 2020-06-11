@@ -23,6 +23,7 @@ const onGetSignIn = function (event) {
 const onGetPlayersInfo = function (event) {
   $('.changepw').show()
   $('.getgames').show()
+  $('.gamelist').hide()
   $('.tracker').hide()
   $('.gameboard').hide()
 }
@@ -96,7 +97,6 @@ const onNewGame = function (event) {
   turn = true
 
   $('.box').empty()
-
   $('.tracker').empty()
 }
 

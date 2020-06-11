@@ -14,10 +14,18 @@ body {
   text-align: center;
 }
 
-
-
 button {
   border-radius: 10px;
+  background-color: #C1C5C6;
+}
+
+#message {
+  font-size: 15px;
+}
+
+.tracker {
+  font-size: 26px;
+  font-family: $message-font-family
 }
 
 .header {
@@ -32,17 +40,15 @@ button {
       }
     }
     .box2 {
-      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       p {
         font-family: $accent-font-family;
-        font-size: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        font-size: 65px;
       }
     }
     .box3 {
-      // background-color: blue;
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -63,10 +69,30 @@ button {
 
 .signup {
   display: none;
+  h2{
+    font-family: $message-font-family;
+  }
+  input {
+    height: 40px;
+    width: 250px;
+  }
+}
+
+.signin {
+  h2{
+    font-family: $message-font-family;
+  }
+  input {
+    height: 40px;
+    width: 250px;
+  }
 }
 
 .changepw {
   display: none;
+  h2{
+    font-family: $message-font-family;
+  }
 }
 
 .newgame {
@@ -75,11 +101,10 @@ button {
 
 .gameboard {
   display: none;
-
+  padding: 0, 10px;
   .container {
     //viewports height (browser height)
-    height: 75vh;
-
+    height: 60vh;
     .board {
       // Set the margins to be auto
       // When the left & right margins are auto, they will be the same, which ends up centering the element (20px is from the top)
@@ -87,8 +112,8 @@ button {
       background-color: #6AC0DB;
       // Set the max size of the board 100vh means 100% of the browser's height
       // Subtract 75 px to give it some spacing at the bottom
-      max-height: calc(75vh - 15px);
-      max-width: calc(75vh - 15px);
+      max-height: calc(60vh - 15px);
+      max-width: calc(60vh - 15px);
 
       // Add background image to board:
       // background: url('') no-repeat center center;
@@ -98,14 +123,13 @@ button {
         //borders: right and bottom of each box
         border-bottom: 1px solid black;
         border-right: 1px solid black;
-
         // Set the box's height to be 1/3 of the parent's height (.board)
         min-height: calc(100% / 3);
         display: flex;
         justify-content: center;
         align-items: center;
-
-        font-size: 15vh;
+        font-family: $accent-font-family;
+        font-size: calc(60vh/6);
         // :nth-child psuedo class will start counting at the beginning and select each "nth" child passing 3n will select every third element.
         // This will be a sass nested selector, using the & to effectively get: .both:nth-child(3n)
         &:nth-child(3n) {
@@ -130,8 +154,7 @@ button {
 
 .getgames {
   display: none;
-}
-
-.changepw {
-  display: none;
+  h2{
+    font-family: $message-font-family;
+  }
 }
