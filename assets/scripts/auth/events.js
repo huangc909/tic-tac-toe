@@ -26,6 +26,7 @@ const onGetPlayersInfo = function (event) {
   $('.gamelist').hide()
   $('.tracker').hide()
   $('.gameboard').hide()
+  $('#message').text("Player's Info Success!")
 }
 
 const onSignUp = function (event) {

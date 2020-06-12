@@ -25,7 +25,7 @@ const signUpFailure = function () {
 
 const signInSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign In success!').show()
+  $('#message').text('Sign In success! Click on "New Game" to start playing!').show()
   $('#message').removeClass().addClass('success')
   $('.signup').hide()
   $('.signin').hide()
@@ -71,7 +71,7 @@ const signOutFailure = function () {
 
 const changePasswordSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Password Change success').show()
+  $('#message').text('Password Change success!').show()
   $('#message').removeClass().addClass('success')
   console.log(response)
 }
@@ -96,7 +96,7 @@ const newGameSuccess = function (response) {
 
 const newGameFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('New Game failed.')
+  $('#message').text('New Game failed!')
   $('#message').removeClass().addClass('failure')
 }
 
