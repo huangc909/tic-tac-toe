@@ -34,22 +34,22 @@ Once the authentication and game logic portions were complete, I worked on styli
 ![Toggle to Sign up](https://i.imgur.com/ELJColu.png)
 
 ### Upon Sign in
-![Upon Sign in](https://i.imgur.com/TiYPLfe.png)
+![Upon Sign in](https://i.imgur.com/joSVwes.png)
 
 ### When New Game button is clicked
-![When New Game button is clicked](https://i.imgur.com/L4euLlS.png)
+![When New Game button is clicked](https://i.imgur.com/oIM4GXR.png)
 
 ### When a game has ended
-![When a game has ended](https://i.imgur.com/DDqPfBL.png)
+![When a game has ended](https://i.imgur.com/UYaNZuQ.png)
 
 ### When Player's Info button is clicked
-![When Player's Info button is clicked](https://i.imgur.com/G45nQVg.png)
+![When Player's Info button is clicked](https://i.imgur.com/ZuAy0CT.png)
 
 ### When "Display all of your previous games!" button is clicked
 ![When "Display all of your previous games!" button is clicked](https://i.imgur.com/m4lO9nl.png)
 
 ### When Sign Out button is clicked (the message fades away after a few seconds)
-![When Sign Out button is clicked (the message fades away after a few seconds)](https://i.imgur.com/uPuN9rm.png)
+![When Sign Out button is clicked (the message fades away after a few seconds)](https://i.imgur.com/bFKasgJ.png)
 
 
 Whenever I completed a user story feature, I thought about the next step in terms of a goal and asked myself "what skills/knowledge did I already know that could achieve this goal?" If I was not sure how the coding syntax should be written, I searched on Google and turned to my coding community by posting issue requests. I then used the research and feedback to solve the goal while simultaneously improving and furthering my code.
@@ -67,7 +67,8 @@ As I worked on this project, I found that I enjoyed thinking about each step log
 - As a user, I want a message to note if I logged out successfully or not.
 - As a user, I want to get information about my past games.
 - As a user, I want to select a box to put my mark down.
-- As a user, I want to be able to play against myself.
+- As a user, I want to be able to play against myself being both 'x' and 'o' or with a friend.
+- As a user, I want to be able to win by getting three of the same marks in three boxes that are in a row whether it is horizontally, vertically, or diagonally.
 - As a user, I want a message to note when the game has ended.
 - As a user, I want a message to display the final result.
 
