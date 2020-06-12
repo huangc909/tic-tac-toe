@@ -51,7 +51,8 @@ I would like to eventually:
 - Have a drop down menu when a “new game” is clicked during a current or an ended game (as seen in my Wireframe Design).
 - Display the game results in reverse order so the most current game is on top.
 - Make the screen more interactive for smaller screens.
-- Resolve the empty space that is shown upon sign in by adding an empty board and perhaps separate the boxes.
+- Resolve the empty space that is shown upon sign in by adding an empty board and separate the boxes.
+- Add borders to the result message as well as the game history section.
 
 ## Images
 
