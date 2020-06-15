@@ -31,7 +31,6 @@ const signIn = function (formData) {
 }
 
 const changePassword = function (formData) {
-  console.log(formData)
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password',
@@ -58,7 +57,6 @@ const signOut = function (formData) {
 }
 
 const newGame = function (formData) {
-  console.log(formData)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games/',
@@ -70,8 +68,6 @@ const newGame = function (formData) {
 }
 
 const updateBoard = function (cell, player) {
-  console.log(cell)
-  console.log(player)
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + store.game._id,
@@ -91,7 +87,6 @@ const updateBoard = function (cell, player) {
 }
 
 const getGames = function (formData) {
-  console.log(formData)
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games/',

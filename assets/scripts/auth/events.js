@@ -35,8 +35,6 @@ const onSignUp = function (event) {
   const form = event.target
   const data = getFormFields(form)
 
-  console.log(event)
-
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -47,8 +45,6 @@ const onSignIn = function (event) {
 
   const form = event.target
   const data = getFormFields(form)
-
-  console.log(event)
 
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -61,9 +57,6 @@ const onSignOut = function (event) {
   const form = event.target
   const data = getFormFields(form)
 
-  console.log(event)
-  console.log(data)
-
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -74,8 +67,6 @@ const onChangePassword = function (event) {
 
   const form = event.target
   const data = getFormFields(form)
-
-  console.log(event)
 
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
@@ -88,9 +79,6 @@ const onNewGame = function (event) {
   const form = event.target
   const data = getFormFields(form)
 
-  console.log(event)
-  console.log(data)
-
   api.newGame(data)
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
@@ -102,7 +90,6 @@ const onNewGame = function (event) {
 }
 
 const onSelectedTile = function (event) {
-  console.log(event)
   // parseInt turns the event.target.dataset.id into a number
   const cell = parseInt(event.target.dataset.id)
   // ternary operator to see who is the current player,
@@ -145,9 +132,6 @@ const onGetGames = function (event) {
   const form = event.target
   const data = getFormFields(form)
 
-  console.log(event)
-  console.log(data)
-
   api.getGames(data)
     .then(ui.getGamesSuccess)
     .catch(ui.getGamesFailure)
@@ -164,5 +148,4 @@ module.exports = {
   onNewGame,
   onSelectedTile,
   onGetGames
-  // score
 }

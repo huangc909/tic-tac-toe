@@ -1,14 +1,6 @@
 'use strict'
 
 const store = require('./../store')
-// const events = require('./events')
-// let xWinCount = 0
-// let oWinCount = 0
-// let tieCount = 0
-//
-// $('#xWins span').text(`${xWinCount}`)
-// $('#oWins span').text(`${oWinCount}`)
-// $('#ties span').text(`${tieCount}`)
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
@@ -35,7 +27,6 @@ const signInSuccess = function (response) {
   $('.getplayersinfobutton').show()
   $('.newgame').show()
 
-  console.log(response)
   store.user = response.user
 }
 
@@ -73,7 +64,6 @@ const changePasswordSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Password Change success!').show()
   $('#message').removeClass().addClass('success')
-  console.log(response)
 }
 
 const changePasswordFailure = function () {
@@ -83,7 +73,6 @@ const changePasswordFailure = function () {
 }
 
 const newGameSuccess = function (response) {
-  console.log(response)
   $('form').trigger('reset')
   $('#message').text('New Game success!').show()
   $('#message').removeClass().addClass('success')
@@ -101,11 +90,11 @@ const newGameFailure = function () {
 }
 
 const updateBoardSuccess = function (response, cell, player) {
-  console.log(response, cell, player)
   store.game = response.game
   const cellVal = store.game.cells
   $('#message').text('Move Recorded!').show()
   $('#message').removeClass().addClass('success')
+
   if (
     ((cellVal[0] === 'x' || cellVal[0] === 'o') && (cellVal[0] === cellVal[1] && cellVal[0] === cellVal[2])) ||
     ((cellVal[3] === 'x' || cellVal[3] === 'o') && (cellVal[3] === cellVal[4] && cellVal[3] === cellVal[5])) ||
@@ -122,8 +111,6 @@ const updateBoardSuccess = function (response, cell, player) {
   } else {
     // test function named 'hasValue' that determines currentValue is either 'o' or 'x'
     const hasValue = (currentValue) => currentValue === 'o' || currentValue === 'x'
-    // console log if the .every method is true or false after each move
-    console.log(cellVal.every(hasValue))
     // if all values are either 'o' or 'x',
     if (cellVal.every(hasValue) === true) {
       // show result message
@@ -141,12 +128,9 @@ const updateBoardFailure = function (response) {
 }
 
 const getGamesSuccess = function (response) {
-  console.log(response)
-
   $('#message').text('Get Game History success!').show()
   $('#message').removeClass().addClass('success')
 
-  store.games = response.games
   let gamesHtml = ''
 
   store.games.forEach(game => {
