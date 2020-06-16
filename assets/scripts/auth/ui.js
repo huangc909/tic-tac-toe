@@ -131,6 +131,8 @@ const getGamesSuccess = function (response) {
   $('#message').text('Get Game History success!').show()
   $('#message').removeClass().addClass('success')
 
+  store.games = response.games
+
   let gamesHtml = ''
 
   store.games.forEach(game => {
