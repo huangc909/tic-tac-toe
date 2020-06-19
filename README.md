@@ -117,9 +117,9 @@ I would like to eventually:
 
 #### When "Display all of your previous games!" button is clicked
 
-![When "Display all of your previous games!" button is clicked](https://i.imgur.com/m4lO9nl.png)
+![When "Display all of your previous games!" button is clicked](https://i.imgur.com/bFKasgJ.png)
 
 
 #### When Sign Out button is clicked (the message fades away after a few seconds)
 
-![When Sign Out button is clicked (the message fades away after a few seconds)](https://i.imgur.com/bFKasgJ.png)
+![When Sign Out button is clicked (the message fades away after a few seconds)](https://i.imgur.com/uPuN9rm.png)
