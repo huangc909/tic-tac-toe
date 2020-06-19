@@ -3,6 +3,7 @@
 const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('./../../../lib/get-form-fields')
+const store = require('./../store')
 
 let turn = true
 
@@ -97,7 +98,8 @@ const onSelectedTile = function (event) {
   // if turn is true, then it is 'x',
   // if turn is false, then it is 'o'
   const player = turn ? 'x' : 'o'
-  if ($('.tracker').text() === 'x has won!' || $('.tracker').text() === 'o has won!' || $('.tracker').text() === 'There is a tie!') {
+  // if ($('.tracker').text() === 'x has won!' || $('.tracker').text() === 'o has won!' || $('.tracker').text() === 'There is a tie!') {
+  if (store.game.over === true) {
   } else {
   // if the event target's HTML text is empty,
     if ($(event.target).text() === '') {

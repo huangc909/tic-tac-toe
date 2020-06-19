@@ -1,5 +1,7 @@
 # Tic-Tac-Toe: A Universal Game
 
+![Tic-Tac-Toe Game in Action](https://i.imgur.com/EJq00df.png)
+
 This application allows the user to play the popular game of tic tac toe. I decided to create this game to apply my knowledge of several technologies, specifically JavaScript, jQuery, API and JSON.
 
 ## Planning Story
@@ -37,10 +39,12 @@ As I worked on this project, I found that I enjoyed thinking about each step log
 ### Technologies Used:
 - JavaScript
 - jQuery
+- cURL
 - API
 - JSON
 - HTML
 - CSS
+- Sass
 - Bootstrap
 
 ### Unsolved Problems

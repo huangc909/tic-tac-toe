@@ -80,7 +80,7 @@ const updateBoard = function (cell, player) {
           index: cell,
           value: player
         },
-        over: false
+        over: store.game.over
       }
     }
   })
